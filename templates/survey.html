@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>View Employees</title>
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Open+Sans:300,400">
+	<link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0-beta1/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-0evHe/X+R7YkIZDRvuzKMRqM+OrBnVFBL6DOitfPri4tjfHxaWutUpFmBp4vmVor" crossorigin="anonymous">
+    <link type="text/css" rel="stylesheet" href="{{url_for('static', filename='tooplate.css')}}">
+</head>
+<body id="survey">
+    <div class="container tm-container-max-800">
+        <div class="row">
+            <div class="col-12">
+                <header class="mt-5 mb-5 text-right">
+                        <center><a href="dashboard" style="font-style:bold" class="tm-white-text">HOME</a></center>
+                        <center><div class="msg">{{ msg }}</div></center>
+                </header>
+                <header class="mt-5 mb-5 text-center">
+                    <h1 class="font-weight-light tm-form-title">Employees List</h1>
+                    <h4>
+                    	{% with messages = get_flashed_messages() %}
+                        	{% if messages %}
+                                    {% for message in messages %}
+                                    	{{ message }}
+                                    {% endfor %}
+                                {% endif %}
+                        {% endwith %}
+                    </h4>
+                </header>
+				
+                <table bgcolor="white" style="color:black" border=6 class="center">
+                     <tr>
+                      <th>Name of Employee</th> 
+                      <th>Email</th>
+                      <th>Phone No.</th>
+                      <th>Address</th>
+                 
+                 
+             
+  
+
+                     </tr>
+                    {% for emp in usercerf %}
+                    <tr> 
+                      <td>{{emp[1]}}</td>
+                      <td>{{emp[2]}}</td>
+                      <td>{{emp[3]}}</td>
+                      <td>{{emp[4]}}</td>
+       
+                      
+                    </tr>
+                    {% endfor %}  
+                 </table>
+            </div>
+        </div>
+    </div>
+            <div class="col-xl-12">
+                <p class="text-center grey-text text-lighten-2 tm-footer-text-small"></p>
+            </div>
+	<script src="{{url_for('static', filename='static/jquery-3.2.1.slim.min.js')}}"></script>
+	<script src="{{url_for('static', filename='static/materialize.min.js')}}"></script>
+	<script src="{{url_for('static', filename='static/animation.js')}}"></script>
+</body>
+</html>
